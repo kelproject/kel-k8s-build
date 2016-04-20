@@ -1,11 +1,19 @@
 language: go
 sudo: required
 dist: trusty
+services:
+  - docker
 branches:
   only:
     - /^v.*_kel\.\d+$/
 go:
   - 1.5
+env:
+  global:
+    # QUAY_USERNAME
+    - secure: "FVkmOGchI30EpJBYj7Pcua5Cg+S68TsPLZHJ31Af71aAnaUedn7gv0S9Xyt+5rYiPxpe9yYeKHHNhhq9DzQTqCNJzZoLZxEfUmPZcDcYILq1Eo/s/O52X95bWcVc7Uo7lV1nJDMVmcck2zcyE/e/qj1wc92TLnO+3iiDkz/fTHc7JTXBmyF2fRXuEyUOM4mgIE7jvSjfiVmLFMPj867stMHR3wHFIFDYMnbhiNG++E7vz7ZqX/wohdYJrN6G/BCYQboN08d3TnCrfDj5KIdgNfXOW0+uSQKgWp0hSyS3vuGXUEtFroRzheJwzC74xkPX7vpA5AkwgeVc3HlQH+2w+xstRsOJbP54teXXXXj1u91acmR1vhl1VNLvaeHypj8AzpGWed2MvdRanPxkjTGlsNj6oAUK3E2/YS9lGG5vtymgdBqMw/YsYEtWjZerQ40r3plxrR9Irxs89gnIgimWiW2hChzPwjQkYiGqfKsJl1s8xu+G76M7czW4ODgdznVxm+u3Y+tOWUcdoiQPTtbXPA50WIx1NLlIAdKHsiFC0mQTYj1f93oAik0evnBBPwg0xWODVSyBdMYdm93N1oLQA3C26TDwC3e/aatn5tDDQ5X50syLQz9lW/JAGah3U1kg6QDRuFmdu347o5QjvFyskV3Xgf8AZkez+vdTxYIR39g="
+    # QUAY_PASSWORD
+    - secure: "EHANYPc4DNFiiV8RhgcJLp9A9FEQvvA0FE5HsYfE0zzRZXA1w3BmT+YirC8yKiCoK+EGcZtA2Vl4M+IMMQvXxdf8b9PpX0YBZcyJgWspj7t1+7JSewV3udRjANxM3a/iDuTW+mTibGl4SDOgpRyRUyzRg2Qv0eZEiRONPCRoxXTssLgifdbs/HNIegw0bn87WXBLxrgB0xAA1DSK9FdvKZNooCxXVqfHlIkk+So6Ax7voxhoCvWqbEWtgCgNEbI/JKAdqp+LqdqsyFivRxJnR0m71e3ZHDyogOvhxQxAnGtdO+QhNPftxXp59Q3IFPeEsMJRWCDOxNXgCWx4X2nD5Fu2vvQITsCDE0tPZ6Xm3pvW9KQ9I+sUfnhM91Zkd4Wj0n1ewCT5wW9avqsLfHqhEma2QxqF3T+n20vqf85B9C6QPtW97xc4gp02pBLtQzUjGoqqevbJe+LdwY9P2IEkyhNvAKvKPj2c7RfqfXm76i7qRua4MzYGQbNhNcEcy63rqhLOIPBgqaJ70hkXc1SJpXWlHGsKb+OfobLxsU2n9JPMwrHei2NNI+OaZInSkkqULDp560C2yfaezNanpyDlF2r4X6KlD3eq5Iw82zb5iPe/wwJCj73ln7a/MBSlQ33avIJEoAjVmckUW7n/bvmrcePGp3YlOvvvpILM0J2zMHY="
 before_install:
   - openssl aes-256-cbc -K $encrypted_3101bddd07d7_key -iv $encrypted_3101bddd07d7_iv -in gcp-travisci.json.enc -out gcp-travisci.json -d
   - echo "deb http://packages.cloud.google.com/apt cloud-sdk-$(lsb_release -c -s) main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
