@@ -7,7 +7,7 @@ branches:
   only:
     - /^v.*_kel\.\d+$/
 go:
-  - 1.5
+  - 1.6
 env:
   global:
     # QUAY_USERNAME
